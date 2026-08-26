@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quant-vest Capital | Algorithmic & Portfolio Management Services</title>
+  
+  <!-- Matching Serif & Sans-Serif Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-blue: #0b1536;
+      --secondary-blue: #1c2b5e;
+      --accent-cyan: #00f2fe;
+      --accent-blue: #4facfe;
+      --accent-grey: #8a94a6;
+      --light-bg: #f4f7fb;
+      --text-dark: #0f172a;
+      --white: #ffffff;
+      --font-serif: 'Cinzel', serif;
+      --font-sans: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      color: var(--text-dark);
+      background-color: var(--white);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .brand-font {
+      font-family: var(--font-serif);
+    }
+
+    /* Header & Nav */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 6%;
+      background: rgba(11, 21, 54, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .logo-text {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.5px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      margin-left: 2rem;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-cyan);
+    }
+
+    .btn-cta {
+      background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      color: var(--primary-blue) !important;
+      padding: 0.65rem 1.6rem;
+      border-radius: 4px;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s !important;
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 242, 254, 0.5);
+    }
+
+    /* Flashy Hero Section */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      background: linear-gradient(135deg, rgba(11, 21, 54, 0.92) 0%, rgba(15, 23, 42, 0.85) 100%),
+                  url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 6%;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    /* Ambient Glow Effects */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, rgba(0,0,0,0) 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      border-radius: 20px;
+      color: var(--accent-cyan);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      line-height: 1.25;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #cbd5e1;
+      max-width: 750px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: var(--white);
+      padding: 0.65rem 1.6rem;
+      border-radius: 4px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--white);
+    }
+
+    /* Common Layout Sections */
+    section {
+      padding: 5rem 6%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: var(--primary-blue);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #475569;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      font-size: 1.05rem;
+    }
+
+    /* Section 1: About Us */
+    .about-section {
+      background: linear-gradient(135deg, var(--light-bg) 0%, #eef2f7 100%);
+    }
+
+    .about-content {
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .about-card {
+      background: var(--white);
+      padding: 2.2rem;
+      border-radius: 8px;
+      border-top: 4px solid var(--secondary-blue);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+      transition: transform 0.3s;
+    }
+
+    .about-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .stats-banner {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, #17244d 100%);
+      color: var(--white);
+      padding: 3.5rem 6%;
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      border-top: 1px solid rgba(0, 242, 254, 0.2);
+    }
+
+    .stat h2 {
+      font-size: 2.8rem;
+      color: var(--accent-cyan);
+    }
+
+    .stat p {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      letter-spacing: 0.5px;
+    }
+
+    /* Section 2: Our Team */
+    .team-content {
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    .team-description {
+      font-size: 1.05rem;
+      color: #334155;
+      margin-bottom: 1.8rem;
+      line-height: 1.8;
+    }
+
+    .team-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .highlight-card {
+      background: var(--light-bg);
+      border-radius: 8px;
+      padding: 2rem;
+      border-left: 4px solid var(--accent-blue);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+
+    .highlight-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+      color: var(--primary-blue);
+    }
+
+    /* Section 3: Careers */
+    .careers-section {
+      background: var(--light-bg);
+    }
+
+    .careers-container {
+      max-width: 850px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 3.5rem;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      border-top: 5px solid var(--primary-blue);
+    }
+
+    .careers-text {
+      font-size: 1.05rem;
+      color: #334155;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .careers-email-box {
+      background: var(--light-bg);
+      padding: 1.2rem;
+      border-radius: 6px;
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: var(--primary-blue);
+      border: 1px dashed var(--accent-blue);
+    }
+
+    /* Section 4: Contact Us */
+    .contact-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3.5rem;
+    }
+
+    .contact-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--primary-blue);
+    }
+
+    .contact-details {
+      margin-top: 1.5rem;
+    }
+
+    .contact-item {
+      margin-bottom: 1.4rem;
+    }
+
+    .contact-item strong {
+      display: block;
+      color: var(--primary-blue);
+      font-size: 0.95rem;
+    }
+
+    .contact-form .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .contact-form input, 
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      padding: 0.85rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-family: var(--font-sans);
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .contact-form input:focus, 
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      border-color: var(--accent-blue);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 0.9rem;
+      background: var(--primary-blue);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: var(--secondary-blue);
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    footer {
+      background: #070d22;
+      color: var(--accent-grey);
+      text-align: center;
+      padding: 2.5rem 6%;
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    footer nav {
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+
+    footer nav a {
+      color: var(--accent-grey);
+      margin: 0 1rem;
+    }
+
+    footer nav a:hover {
+      color: var(--white);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      header {
+        padding: 0.8rem 4%;
+      }
+      nav a {
+        margin-left: 1rem;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header Nav -->
+  <header>
+    <a href="#" class="logo-container">
+      <img src="LogoColorTextBelow.jpeg" alt="Quant-vest Capital Logo" class="logo-img" />
+      <span class="logo-text brand-font">Quant-vest Capital</span>
+    </a>
+    <nav>
+      <a href="#about-us">About Us</a>
+      <a href="#our-team">Our Team</a>
+      <a href="#careers">Careers</a>
+      <a href="#contact-us" class="btn-cta">Contact Us</a>
+    </nav>
+  </header>
+
+  <!-- Flashy Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Algorithmic Precision & Risk Management</div>
+      <h1>Data-Driven Alpha.<br><span>Institutional Execution.</span></h1>
+      <p>Combining time-tested value investing principles with high-frequency quantitative models to outperform index benchmark performance while enforcing strict capital protection.</p>
+      <div class="hero-buttons">
+        <a href="#about-us" class="btn-cta">Explore Portfolio Strategy</a>
+        <a href="#contact-us" class="btn-secondary">Request Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 1: ABOUT US -->
+  <section id="about-us" class="about-section">
+    <h2 class="section-title">About Us</h2>
+    <p class="section-subtitle">Quant-vest Investment & Portfolio Management</p>
+    
+    <div class="about-content">
+      <p style="text-align: center; color: #334155; margin-bottom: 2rem; font-size: 1.15rem; line-height: 1.8;">
+        Quant-vest is a Private Limited Portfolio Management Company that focuses on generating returns by investing in a diversified portfolio of high quality publicly listed Indian companies using a combination of Value Investing Approach along with Advanced Mathematical Models. Company's primary goal is to generate returns that superceed Index Returns while ensuring a robust Risk Management framework to protect Capital.
+      </p>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>Value Investing Approach</h3>
+          <p>Identifying robust fundamentals and intrinsic valuation discounts across high-quality publicly listed Indian equities.</p>
+        </div>
+        <div class="about-card">
+          <h3>Advanced Mathematical Models</h3>
+          <p>Deploying quantitative algorithms to identify alpha signals and systematically rebalance risk exposure in real time.</p>
+        </div>
+        <div class="about-card">
+          <h3>Capital Protection</h3>
+          <p>Embedding strict risk metrics and downside controls within every portfolio strategy to safeguard capital against drawdowns.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- High Impact Stats Banner -->
+  <div class="stats-banner">
+    <div class="stat">
+      <h2>$1.2B+</h2>
+      <p>Assets Under Advisory</p>
+    </div>
+    <div class="stat">
+      <h2>10+ Years</h2>
+      <p>Bulge Bracket Banking Experience</p>
+    </div>
+    <div class="stat">
+      <h2>99%</h2>
+      <p>Client Retention Rate</p>
+    </div>
+  </div>
+
+  <!-- PAGE 2: OUR TEAM -->
+  <section id="our-team">
+    <h2 class="section-title">Our Team</h2>
+    <p class="section-subtitle">Global Finance Professionals with Deep Expertise in Financial Risk Management</p>
+
+    <div class="team-content">
+      <p class="team-description">
+        We are a team of Global Finance Professionals with Expertise in the area of Financial Risk Management. Our Founders have over a decade of experience in the Finance Industry, having worked for Bulge Bracket Global Investment Banks like HSBC, Credit Suisse, RBS, and large Government-Owned Indian Banks. The team of experts are certified in the area of Risk Management and hold degrees in Finance, Engineering, and Risk Management. Our team also holds advanced Global Risk certifications like CQF from London.
+      </p>
+
+      <p class="team-description">
+        The objective of the team is to generate Returns by investing in Financial Markets that superseed Index based on a Hybrid approach which incorporates traits of not only Value Investing but also leverages state-of-the-art cutting-edge Quantitative Models. Quantitative Models help in generation of superior returns than index returns while keeping Risk Management towards Capital Conservation as a Key Criterion.
+      </p>
+
+      <div class="team-highlights">
+        <div class="highlight-card">
+          <h3>Global Institutional Pedigree</h3>
+          <p>Over a decade of leadership experience across top investment banks such as HSBC, Credit Suisse, RBS, and Indian PSU Banks.</p>
+        </div>
+        <div class="highlight-card">
+          <h3>Elite Qualifications</h3>
+          <p>Team credentials span Engineering, Finance degrees, and globally respected certifications including CQF (London).</p>
+        </div>
+        <div class="highlight-card">
+          <h3>Hybrid Quantitative Framework</h3>
+          <p>Blending disciplined fundamental analysis with algorithmic execution focused on capital conservation and continuous alpha growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 3: CAREERS -->
+  <section id="careers" class="careers-section">
+    <h2 class="section-title">Careers</h2>
+    <p class="section-subtitle">Shape the future of financial analytics and quantitative portfolio management.</p>
+
+    <div class="careers-container">
+      <p class="careers-text">
+        We are looking for talented young Finance Professionals who are motivated enough to make a mark in the arena of High-End Financial Analytics and Portfolio Management. Individuals holding MBAs from Tier-1 MBA Colleges, or certifications in Risk like CQF, FRM, and PRM are invited to send their applications.
+      </p>
+
+      <p class="careers-text">
+        Shortlisted candidates will be contacted for an interview.
+      </p>
+
+      <div class="careers-email-box">
+        Send Applications to: <span>careers@quantvestcapital.com</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 4: CONTACT US -->
+  <section id="contact-us">
+    <h2 class="section-title">Contact Us</h2>
+    <p class="section-subtitle">Connect with our institutional investment and quantitative advisory team.</p>
+
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Get in Touch</h3>
+        <p>Whether you are inquiring about our Portfolio Management Services or exploring career opportunities, our experts are available to guide you.</p>
+        
+        <div class="contact-details">
+          <div class="contact-item">
+            <strong>Corporate Office</strong>
+            <p>Quant-vest Capital Advisory<br>Financial District, Mumbai / Delhi, India</p>
+          </div>
+          <div class="contact-item">
+            <strong>Direct Channels</strong>
+            <p>General: info@quantvestcapital.com<br>Careers: careers@quantvestcapital.com</p>
+          </div>
+          <div class="contact-item">
+            <strong>Business Hours</strong>
+            <p>Monday – Friday: 9:00 AM – 6:00 PM IST</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form onsubmit="event.preventDefault(); alert('Thank you. Your request has been sent to Quant-vest Capital.');">
+          <div class="form-group">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" required placeholder="John Doe" />
+          </div>
+          <div class="form-group">
+            <label for="email-address">Email Address</label>
+            <input type="email" id="email-address" required placeholder="john@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="subject">Inquiry Type</label>
+            <select id="subject" required>
+              <option value="">Select a category</option>
+              <option value="pms">Portfolio Management Services</option>
+              <option value="careers">Careers & Hiring</option>
+              <option value="general">General Advisory</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" rows="4" required placeholder="How can our team assist you?"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Submit Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <nav>
+      <a href="#about-us">About Us</a>
+      <a href="#our-team">Our Team</a>
+      <a href="#careers">Careers</a>
+      <a href="#contact-us">Contact Us</a>
+    </nav>
+    <p>&copy; 2026 Quant-vest Capital Advisory. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
