@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quant-vest Capital | Algorithmic & Portfolio Management Services</title>
+  <title>Quant-vest Capital | Quantitative Investment & Risk Management</title>
+  <meta name="description" content="Quant-vest Capital combines value investing, quantitative models and disciplined risk management for Indian equities.">
   
   <!-- Matching Serif & Sans-Serif Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -462,7 +463,302 @@
         font-size: 0.85rem;
       }
     }
-  </style>
+  
+/* ===== Interactive / Motion Upgrade ===== */
+body { cursor: default; }
+header { transition: background .35s ease, padding .35s ease, box-shadow .35s ease; }
+header.scrolled { padding-top:.65rem; padding-bottom:.65rem; background:rgba(7,13,34,.97); box-shadow:0 10px 35px rgba(0,0,0,.28); }
+
+.hero { min-height: 92vh; isolation:isolate; }
+.hero-video {
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  opacity:.30; z-index:-3; filter:saturate(.75) contrast(1.1);
+}
+.hero::after {
+  content:""; position:absolute; inset:0; z-index:-2;
+  background:linear-gradient(180deg,rgba(5,11,30,.35),rgba(5,11,30,.88));
+}
+.hero-content { animation: heroIn 1.1s cubic-bezier(.2,.8,.2,1) both; }
+.hero-badge { animation:pulseGlow 2.8s ease-in-out infinite; }
+.hero h1 { text-shadow:0 8px 35px rgba(0,0,0,.35); }
+.hero-buttons a { position:relative; overflow:hidden; }
+.hero-buttons a::after {
+  content:""; position:absolute; width:20px; height:20px; border-radius:50%;
+  background:rgba(255,255,255,.35); transform:scale(0); opacity:0;
+  transition:transform .55s, opacity .55s; pointer-events:none;
+}
+.hero-buttons a:hover::after { transform:scale(12); opacity:1; }
+
+.reveal { opacity:0; transform:translateY(35px); transition:opacity .8s ease, transform .8s ease; }
+.reveal.visible { opacity:1; transform:none; }
+
+.about-card, .highlight-card, .careers-container {
+  position:relative; overflow:hidden;
+}
+.about-card::before, .highlight-card::before {
+  content:""; position:absolute; width:140px; height:140px; border-radius:50%;
+  right:-60px; top:-70px; background:rgba(0,242,254,.08);
+  transition:transform .45s ease;
+}
+.about-card:hover::before, .highlight-card:hover::before { transform:scale(2.2); }
+.about-card:hover, .highlight-card:hover {
+  transform:translateY(-10px) scale(1.015);
+  box-shadow:0 18px 45px rgba(11,21,54,.12);
+}
+
+.stats-banner { position:relative; overflow:hidden; }
+.stats-banner::before {
+  content:""; position:absolute; inset:-100px;
+  background:repeating-linear-gradient(115deg,transparent 0 40px,rgba(0,242,254,.035) 41px 42px);
+  animation:moveGrid 18s linear infinite;
+}
+.stat { position:relative; z-index:1; min-width:180px; }
+.stat h2 { transition:transform .3s ease; }
+.stat:hover h2 { transform:scale(1.08); }
+
+.strategy-section { background:#07102d; color:#fff; }
+.strategy-section .section-title { color:#fff; }
+.strategy-section .section-subtitle { color:#b9c7dc; }
+.strategy-grid {
+  max-width:1100px; margin:0 auto; display:grid;
+  grid-template-columns:repeat(3,1fr); gap:1.4rem;
+}
+.strategy-card {
+  padding:2rem; border:1px solid rgba(255,255,255,.12); border-radius:14px;
+  background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
+  backdrop-filter:blur(12px); transition:.35s; cursor:pointer;
+}
+.strategy-card:hover { transform:translateY(-8px); border-color:rgba(0,242,254,.55); }
+.strategy-icon { font-size:2rem; margin-bottom:.8rem; }
+.strategy-card p { color:#b9c7dc; }
+.strategy-card .meter { height:5px; background:#1b294e; border-radius:9px; margin-top:1.2rem; overflow:hidden; }
+.strategy-card .meter span { display:block; height:100%; width:0; background:linear-gradient(90deg,#00f2fe,#4facfe); transition:width 1.2s ease; }
+
+.video-section { background:linear-gradient(135deg,#f4f7fb,#eaf0f8); }
+.video-wrap {
+  max-width:1100px; margin:auto; display:grid; grid-template-columns:1.5fr 1fr;
+  gap:2rem; align-items:center;
+}
+.video-box {
+  position:relative; border-radius:18px; overflow:hidden; background:#07102d;
+  box-shadow:0 25px 60px rgba(7,13,34,.18);
+}
+.video-box video { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; }
+.video-caption h3 { font-size:1.5rem; color:var(--primary-blue); margin-bottom:.7rem; }
+.video-caption p { color:#475569; margin-bottom:1rem; }
+.play-note { display:inline-flex; gap:.5rem; align-items:center; font-weight:700; color:#0b1536; }
+
+#cursorGlow {
+  position:fixed; width:220px; height:220px; border-radius:50%; pointer-events:none;
+  background:radial-gradient(circle,rgba(0,242,254,.09),transparent 65%);
+  transform:translate(-50%,-50%); z-index:9999; opacity:0;
+}
+.mobile-toggle { display:none; border:0; background:none; color:#fff; font-size:1.6rem; cursor:pointer; }
+
+@keyframes heroIn { from{opacity:0; transform:translateY(25px) scale(.98)} to{opacity:1;transform:none} }
+@keyframes pulseGlow { 0%,100%{box-shadow:0 0 0 rgba(0,242,254,0)} 50%{box-shadow:0 0 24px rgba(0,242,254,.2)} }
+@keyframes moveGrid { to{transform:translateX(120px)} }
+
+@media(max-width:800px) {
+  .mobile-toggle { display:block; }
+  header nav {
+    position:absolute; left:4%; right:4%; top:100%; display:none; flex-direction:column;
+    align-items:stretch; padding:1rem; background:#0b1536; border-radius:0 0 12px 12px;
+  }
+  header nav.open { display:flex; }
+  nav a { margin:.6rem 0 !important; }
+  .strategy-grid, .video-wrap { grid-template-columns:1fr; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .reveal { opacity:1; transform:none; }
+}
+
+  
+/* =========================================================
+   QUANT-VEST CAPITAL — INSTITUTIONAL PREMIUM SYSTEM
+   Inspired by the visual discipline of institutional finance,
+   without copying any third-party branding.
+   ========================================================= */
+:root{
+  --ivory:#f5f4ef;
+  --paper:#fbfbf8;
+  --ink:#101820;
+  --navy:#071522;
+  --navy2:#0d2233;
+  --steel:#607080;
+  --line:#d9ddd9;
+  --gold:#b89b5e;
+  --gold2:#d2bb83;
+  --cyan:#62c7d5;
+}
+body{background:var(--paper);color:var(--ink);font-family:Inter,Arial,sans-serif}
+h1,h2,h3,.brand-font{font-family:Cinzel,Georgia,serif}
+header{
+  height:78px;padding:0 5.5%;background:rgba(7,21,34,.96);
+  border-bottom:1px solid rgba(255,255,255,.09);box-shadow:none;
+}
+header.scrolled{height:66px;background:rgba(7,21,34,.985);box-shadow:0 8px 30px rgba(0,0,0,.22)}
+.logo-img{height:40px}
+.logo-text{font-family:Cinzel,Georgia,serif;font-size:1.12rem;letter-spacing:1.3px}
+nav a{font-size:.78rem;text-transform:uppercase;letter-spacing:1.4px;color:#dce3e8}
+nav a:hover{color:var(--gold2)}
+.btn-cta{
+  background:var(--gold);color:#071522!important;border-radius:2px;
+  padding:.7rem 1.35rem;box-shadow:none;text-transform:uppercase;
+  letter-spacing:1.1px;font-size:.72rem
+}
+.btn-cta:hover{background:#d1b675;transform:translateY(-1px);box-shadow:0 8px 22px rgba(184,155,94,.18)}
+
+.hero{
+  min-height:calc(100vh - 78px);background:#06131f;
+  justify-content:flex-start;padding:8rem 8%;align-items:center
+}
+.hero-video{opacity:.18;filter:grayscale(1) contrast(1.3);mix-blend-mode:screen}
+.hero::before{
+  width:70vw;height:70vw;top:-45%;left:-25%;
+  background:radial-gradient(circle,rgba(98,199,213,.12),transparent 66%);
+}
+.hero::after{background:linear-gradient(90deg,rgba(4,15,25,.97) 0%,rgba(4,15,25,.79) 47%,rgba(4,15,25,.35) 100%)}
+.hero-content{max-width:920px;text-align:left}
+.hero-badge{
+  border:0;border-left:2px solid var(--gold);border-radius:0;
+  padding:.15rem 0 .15rem 1rem;background:none;color:#d6bf87;
+  letter-spacing:2.2px;font-size:.68rem
+}
+.hero h1{
+  font-size:clamp(3.3rem,6.5vw,6.2rem);line-height:1.04;
+  margin-bottom:1.5rem;letter-spacing:-1.5px
+}
+.hero h1 span{
+  background:none;-webkit-text-fill-color:initial;color:#d2dce2
+}
+.hero p{
+  margin:0 0 2.5rem;max-width:690px;font-size:1.04rem;
+  color:#aebdc8;line-height:1.9
+}
+.hero-buttons{justify-content:flex-start;gap:.9rem}
+.btn-secondary{border-color:#6e7d88;border-radius:2px;padding:.72rem 1.35rem;text-transform:uppercase;letter-spacing:1px;font-size:.72rem}
+.btn-secondary:hover{background:rgba(255,255,255,.07);border-color:#dce3e8}
+
+section{padding:6.5rem 7%}
+.section-title{
+  font-size:2.45rem;letter-spacing:-.5px;color:var(--navy);
+  position:relative;padding-bottom:1.15rem
+}
+.section-title:after{
+  content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:42px;height:2px;background:var(--gold)
+}
+.section-subtitle{font-size:.9rem;letter-spacing:.3px;color:#687680}
+.about-section{background:var(--ivory)}
+.about-content{max-width:1080px}
+.about-content>p{font-size:1.03rem!important;color:#43515b!important}
+.about-grid{gap:1px;background:#cfd4d1;border:1px solid #cfd4d1}
+.about-card{
+  background:var(--paper);border:0;border-top:0;border-radius:0;
+  padding:2.5rem;box-shadow:none;min-height:230px
+}
+.about-card h3,.highlight-card h3{font-size:1.15rem;letter-spacing:.2px}
+.about-card p,.highlight-card p{font-size:.9rem;color:#62707a;line-height:1.8}
+
+.stats-banner{
+  background:var(--navy);padding:3.2rem 7%;border:0
+}
+.stat{padding:0 3rem;border-right:1px solid rgba(255,255,255,.13)}
+.stat:last-child{border-right:0}
+.stat h2{font-family:Inter,Arial,sans-serif;font-size:2.25rem;font-weight:500;color:#e2c98f;letter-spacing:-1px}
+.stat p{text-transform:uppercase;font-size:.64rem;letter-spacing:1.8px;color:#9caeb9}
+
+#our-team{background:var(--paper)}
+.team-description{font-size:.98rem;color:#53616b}
+.team-highlights{gap:1px;background:#d3d8d5;border:1px solid #d3d8d5}
+.highlight-card{border:0;border-left:0;border-radius:0;background:#f5f6f3;box-shadow:none;padding:2.2rem}
+.highlight-card:after{
+  content:"";position:absolute;left:0;top:0;width:3px;height:0;background:var(--gold);
+  transition:height .45s ease
+}
+.highlight-card:hover:after{height:100%}
+.highlight-card:hover{transform:none;box-shadow:none;background:#fff}
+
+.strategy-section{
+  background:linear-gradient(110deg,#06131f,#0c2233);
+  padding-top:7rem;padding-bottom:7rem
+}
+.strategy-section .section-title{color:#f4f1e8}
+.strategy-section .section-subtitle{color:#9cabb5}
+.strategy-section .section-title:after{background:var(--gold)}
+.strategy-grid{gap:1px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.13)}
+.strategy-card{
+  background:rgba(255,255,255,.025);border:0;border-radius:0;
+  padding:2.5rem;min-height:290px
+}
+.strategy-card:hover{transform:none;background:rgba(255,255,255,.065);border-color:transparent}
+.strategy-icon{font-family:Georgia,serif;color:var(--gold2);font-size:1.5rem}
+.strategy-card h3{color:#edf1f2;font-size:1.15rem}
+.strategy-card p{color:#9eafb9;font-size:.87rem;line-height:1.8}
+.strategy-card .meter{background:#213442;border-radius:0;height:2px}
+.strategy-card .meter span{background:var(--gold2)}
+
+.video-section{background:#eef0ed}
+.video-wrap{max-width:1120px}
+.video-box{border-radius:0;box-shadow:0 25px 60px rgba(7,21,34,.14);border:1px solid #cbd1cf}
+.video-caption h3{font-size:1.7rem}
+.video-caption p{font-size:.93rem;line-height:1.9}
+.play-note{font-size:.68rem;text-transform:uppercase;letter-spacing:1.4px;color:#67757e}
+
+.careers-section{background:var(--ivory)}
+.careers-container{
+  border-radius:0;border-top:2px solid var(--gold);background:#fff;
+  box-shadow:0 18px 45px rgba(8,20,30,.07)
+}
+.careers-text{font-size:.95rem;color:#53616b}
+.careers-email-box{border:1px solid #c8cec9;border-radius:0;background:#f3f4f1;font-size:.82rem}
+
+#contact-us{background:var(--paper)}
+.contact-info h3{font-size:1.45rem}
+.contact-item strong{font-size:.72rem;text-transform:uppercase;letter-spacing:1.3px;color:#71808a}
+.contact-item p{font-size:.88rem;color:#53616b}
+.contact-form input,.contact-form textarea,.contact-form select{
+  border-radius:0;background:#fff;border:1px solid #cbd1ce;padding:1rem
+}
+.contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{border-color:var(--gold)}
+.btn-submit{
+  background:var(--navy);border-radius:0;text-transform:uppercase;
+  letter-spacing:1.4px;font-size:.72rem;padding:1rem
+}
+.btn-submit:hover{background:#173349}
+
+footer{background:#06111b;border-top:1px solid rgba(255,255,255,.08);padding:3rem 7%}
+footer nav a{font-size:.67rem;letter-spacing:1.4px}
+
+.institutional-strip{
+  display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;
+  padding:1.05rem 7%;background:#0b1d2b;color:#9babb5;
+  border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);
+  text-transform:uppercase;letter-spacing:1.5px;font-size:.61rem
+}
+.institutional-strip span::before{content:"◆";color:var(--gold);margin-right:.55rem;font-size:.45rem}
+
+.market-ticker{
+  height:34px;overflow:hidden;background:#030b12;color:#91a3ad;
+  display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,.08);
+  font:600 .61rem Inter,Arial,sans-serif;letter-spacing:1px;text-transform:uppercase
+}
+.ticker-track{display:flex;gap:3.4rem;white-space:nowrap;animation:ticker 28s linear infinite}
+.ticker-track b{color:#d6bf87;font-weight:600}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+@media(max-width:800px){
+  header{height:68px}
+  .hero{min-height:calc(100vh - 68px);padding:6rem 7%}
+  .hero h1{font-size:3rem}
+  .hero p{font-size:.93rem}
+  .stat{border-right:0;border-bottom:1px solid rgba(255,255,255,.12);padding:1rem 0}
+  .stat:last-child{border-bottom:0}
+  .institutional-strip{gap:1.1rem;font-size:.52rem}
+}
+
+</style>
 </head>
 <body>
 
@@ -472,6 +768,7 @@
       <img src="LogoColorTextBelow.jpeg" alt="Quant-vest Capital Logo" class="logo-img" />
       <span class="logo-text brand-font">Quant-vest Capital</span>
     </a>
+    <button class="mobile-toggle" aria-label="Open menu">☰</button>
     <nav>
       <a href="#about-us">About Us</a>
       <a href="#our-team">Our Team</a>
@@ -480,8 +777,25 @@
     </nav>
   </header>
 
+  <div class="market-ticker" aria-label="Market information">
+    <div class="ticker-track">
+      <span>Quantitative Research <b>● ACTIVE</b></span>
+      <span>Risk Framework <b>● DISCIPLINED</b></span>
+      <span>Indian Equities <b>● FOCUS</b></span>
+      <span>Value + Quant <b>● HYBRID</b></span>
+      <span>Capital Conservation <b>● PRIORITY</b></span>
+      <span>Quantitative Research <b>● ACTIVE</b></span>
+      <span>Risk Framework <b>● DISCIPLINED</b></span>
+      <span>Indian Equities <b>● FOCUS</b></span>
+      <span>Value + Quant <b>● HYBRID</b></span>
+      <span>Capital Conservation <b>● PRIORITY</b></span>
+    </div>
+  </div>
+
+
   <!-- Flashy Hero Section -->
   <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto"><source src="./quantvest_market_animation.mp4" type="video/mp4"></video>
     <div class="hero-content">
       <div class="hero-badge">Algorithmic Precision & Risk Management</div>
       <h1>Data-Driven Alpha.<br><span>Institutional Execution.</span></h1>
@@ -493,8 +807,43 @@
     </div>
   </section>
 
+
+
+
+  <div class="institutional-strip">
+    <span>Fundamental Research</span>
+    <span>Quantitative Models</span>
+    <span>Risk Analytics</span>
+    <span>Systematic Execution</span>
+  </div>
+
+  <section class="strategy-section reveal" id="strategy">
+    <h2 class="section-title">Our Investment Engine</h2>
+    <p class="section-subtitle">The Three Pillars of our Investment Approach.</p>
+    <div class="strategy-grid">
+      <div class="strategy-card" data-meter="88">
+        <div class="strategy-icon">◈</div>
+        <h3>Value Based Investing</h3>
+        <p>Fundamental quality and valuation discipline form the starting point for security selection.</p>
+        <div class="meter"><span></span></div>
+      </div>
+      <div class="strategy-card" data-meter="94">
+        <div class="strategy-icon">⌁</div>
+        <h3>Quant Models</h3>
+        <p>Mathematical models help identify signals and continuously assess portfolio opportunities.</p>
+        <div class="meter"><span></span></div>
+      </div>
+      <div class="strategy-card" data-meter="97">
+        <div class="strategy-icon">△</div>
+        <h3>Risk Controls</h3>
+        <p>Risk management and capital conservation remain embedded in the portfolio process.</p>
+        <div class="meter"><span></span></div>
+      </div>
+    </div>
+  </section>
+
   <!-- PAGE 1: ABOUT US -->
-  <section id="about-us" class="about-section">
+  <section id="about-us" class="about-section reveal">
     <h2 class="section-title">About Us</h2>
     <p class="section-subtitle">Quant-vest Investment & Portfolio Management</p>
     
@@ -537,7 +886,7 @@
   </div>
 
   <!-- PAGE 2: OUR TEAM -->
-  <section id="our-team">
+  <section id="our-team" class="reveal">
     <h2 class="section-title">Our Team</h2>
     <p class="section-subtitle">Global Finance Professionals with Deep Expertise in Financial Risk Management</p>
 
@@ -568,7 +917,7 @@
   </section>
 
   <!-- PAGE 3: CAREERS -->
-  <section id="careers" class="careers-section">
+  <section id="careers" class="careers-section reveal">
     <h2 class="section-title">Careers</h2>
     <p class="section-subtitle">Shape the future of financial analytics and quantitative portfolio management.</p>
 
@@ -588,7 +937,7 @@
   </section>
 
   <!-- PAGE 4: CONTACT US -->
-  <section id="contact-us">
+  <section id="contact-us" class="reveal">
     <h2 class="section-title">Contact Us</h2>
     <p class="section-subtitle">Connect with our institutional investment and quantitative advisory team.</p>
 
@@ -644,6 +993,7 @@
 
   <!-- Footer -->
   <footer>
+    <button class="mobile-toggle" aria-label="Open menu">☰</button>
     <nav>
       <a href="#about-us">About Us</a>
       <a href="#our-team">Our Team</a>
@@ -652,6 +1002,128 @@
     </nav>
     <p>&copy; 2026 Quant-vest Capital Advisory. All Rights Reserved.</p>
   </footer>
+
+
+<script>
+(() => {
+  const header = document.querySelector('header');
+  const toggle = document.querySelector('.mobile-toggle');
+  const nav = document.querySelector('header nav');
+  const glow = document.createElement('div');
+  glow.id = 'cursorGlow';
+  document.body.appendChild(glow);
+
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 30);
+  }, {passive:true});
+
+  if (toggle) toggle.addEventListener('click', () => nav.classList.toggle('open'));
+  document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+  // Scroll reveal
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Animated stat counters
+  document.querySelectorAll('.stat h2').forEach(el => {
+    const text = el.textContent.trim();
+    const match = text.match(/(\d+(?:\.\d+)?)/);
+    if (!match) return;
+    const target = parseFloat(match[1]);
+    const suffix = text.slice(match[0].length);
+    el.dataset.target = target;
+    el.dataset.suffix = suffix;
+    el.textContent = '0' + suffix;
+  });
+
+  const statObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      document.querySelectorAll('.stat h2[data-target]').forEach(el => {
+        if (el.dataset.done) return;
+        el.dataset.done = '1';
+        const target = Number(el.dataset.target), suffix = el.dataset.suffix;
+        const start = performance.now(), duration = 1300;
+        const tick = now => {
+          const p = Math.min((now-start)/duration, 1);
+          const eased = 1 - Math.pow(1-p, 3);
+          el.textContent = Math.round(target*eased) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+      statObserver.disconnect();
+    });
+  }, {threshold:.4});
+  const stats = document.querySelector('.stats-banner');
+  if (stats) statObserver.observe(stats);
+
+  // Strategy meters animate when visible
+  const meterObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('.strategy-card').forEach(card => {
+        const span = card.querySelector('.meter span');
+        if (span) span.style.width = (card.dataset.meter || 85) + '%';
+      });
+      meterObserver.unobserve(entry.target);
+    });
+  }, {threshold:.25});
+  const strategy = document.querySelector('.strategy-grid');
+  if (strategy) meterObserver.observe(strategy);
+
+  // Subtle cursor interaction on desktop
+  if (window.matchMedia('(pointer:fine)').matches) {
+    window.addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+      glow.style.opacity = '.9';
+    }, {passive:true});
+  }
+
+  // Pause videos when tab is hidden to reduce CPU/network use.
+  document.addEventListener('visibilitychange', () => {
+    document.querySelectorAll('video').forEach(v => {
+      if (document.hidden) v.pause();
+      else v.play().catch(() => {});
+    });
+  });
+})();
+</script>
+
+
+<script id="quantvest-video-fix">
+(function () {
+  function startVideos() {
+    document.querySelectorAll("video").forEach(function (video) {
+      video.muted = true;
+      video.setAttribute("muted", "");
+      video.playsInline = true;
+      video.setAttribute("playsinline", "");
+      var promise = video.play();
+      if (promise && promise.catch) promise.catch(function () {});
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startVideos, {once:true});
+  } else {
+    startVideos();
+  }
+  window.addEventListener("load", startVideos);
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden) startVideos();
+  });
+  document.addEventListener("click", startVideos, {once:true});
+})();
+</script>
 
 </body>
 </html>
