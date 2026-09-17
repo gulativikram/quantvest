@@ -891,6 +891,9 @@ footer nav a{font-size:.67rem;letter-spacing:1.4px}
     <p class="section-subtitle">Global Finance Professionals with Deep Expertise in Financial Risk Management</p>
 
     <div class="team-content">
+        
+   
+
       <p class="team-description">
         We are a team of Global Finance Professionals with Expertise in the area of Financial Risk Management. Our Founders have over a decade of experience in the Finance Industry, having worked for Bulge Bracket Global Investment Banks like HSBC, Credit Suisse, RBS, and large Government-Owned Indian Banks. The team of experts are certified in the area of Risk Management and hold degrees in Finance, Engineering, and Risk Management. Our team also holds advanced Global Risk certifications like CQF from London.
       </p>
@@ -946,6 +949,14 @@ footer nav a{font-size:.67rem;letter-spacing:1.4px}
         <h3>Get in Touch</h3>
         <p>Whether you are inquiring about our Portfolio Management Services or exploring career opportunities, our experts are available to guide you.</p>
         
+        <!-- AI Assistant Video Block -->
+        <div class="video-box" style="margin: 2rem 0;">
+          <video width="100%" controls playsinline style="display: block;">
+            <source src="AI Assistant.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
         <div class="contact-details">
           <div class="contact-item">
             <strong>Corporate Office</strong>
@@ -1088,21 +1099,20 @@ footer nav a{font-size:.67rem;letter-spacing:1.4px}
     }, {passive:true});
   }
 
-  // Pause videos when tab is hidden to reduce CPU/network use.
+  // Pause background videos when tab is hidden to reduce CPU/network use.
   document.addEventListener('visibilitychange', () => {
     document.querySelectorAll('video').forEach(v => {
       if (document.hidden) v.pause();
-      else v.play().catch(() => {});
+      else if (v.classList.contains('hero-video')) v.play().catch(() => {});
     });
   });
 })();
 </script>
 
-
 <script id="quantvest-video-fix">
 (function () {
   function startVideos() {
-    document.querySelectorAll("video").forEach(function (video) {
+    document.querySelectorAll("video.hero-video").forEach(function (video) {
       video.muted = true;
       video.setAttribute("muted", "");
       video.playsInline = true;
